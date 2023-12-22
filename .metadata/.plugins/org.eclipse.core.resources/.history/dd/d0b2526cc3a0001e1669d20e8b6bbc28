@@ -1,0 +1,44 @@
+package com.Ide.testcases;
+
+import java.io.IOException;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import com.Ide.pageobject.AllAthleteInfoPage;
+import com.Ide.pageobject.ExploreAthletesPage;
+import com.Ide.pageobject.HomePage;
+
+public class TC__002__ExploreAthletesPageTest extends BaseClass{
+
+	@Test(enabled=true)
+	public void verifyAthletesName() throws IOException {
+		logger.info("***************TestCase verify Athletes Name starts*****************"); 
+
+		HomePage hp=new HomePage(driver);       
+		hp.getSearchName("Jeff Stein");
+
+		ExploreAthletesPage athletes=new ExploreAthletesPage(driver);
+
+		athletes.getClickOnName();
+
+		AllAthleteInfoPage athlete=new AllAthleteInfoPage(driver);
+		String actualTitle=     athlete.getPageTitle();
+
+		if(actualTitle.equals("Jeff Stein - Gearsay"))
+		{
+			logger.info("verify Athlete - Passed");
+			Assert.assertTrue(true);
+		}
+
+		else
+		{
+			logger.info("verify Athlete - Failed");
+			captureScreenShot(driver,"verifyAthletesName");
+			Assert.assertTrue(false);
+		}
+
+
+		logger.info("***************TestCase verify Athletes ends*****************");
+	}
+}

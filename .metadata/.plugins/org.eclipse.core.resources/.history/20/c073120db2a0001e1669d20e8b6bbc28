@@ -1,0 +1,30 @@
+package com.Ide.pageobject;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class homePage {
+
+	WebDriver ldriver;
+	
+	//constructor
+	public homePage(WebDriver rdriver)
+	{
+		this.ldriver=rdriver;
+		PageFactory.initElements(rdriver, this);
+	}
+	
+	//identify webelements
+	
+	@FindBy(xpath="//ol[@class=\"list-numbered\"]")
+	WebElement text;
+		
+	//Action on WebElement	
+	public void allText()
+	{
+	  String allText=text.getText();
+	  System.out.println(allText);	  
+	}
+}

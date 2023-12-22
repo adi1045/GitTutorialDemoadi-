@@ -1,0 +1,41 @@
+package com.Ide.pageobject;
+
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class HomePage {
+
+	WebDriver ldriver;
+	
+	//constructor
+	public HomePage(WebDriver rdriver)
+	{
+		this.ldriver=rdriver;
+		PageFactory.initElements(rdriver, this);
+	}
+	
+	//identify webelements
+	
+	@FindBy(xpath="//ol[@class=\"list-numbered\"]")
+	WebElement text;
+	
+	@FindBy(xpath="(//input[@name=\"query\"])[1]")
+	WebElement searchName;
+		
+	//Action on WebElement	
+	public String getAllText()
+	{
+	  String allText=text.getText();
+	    return allText;
+	}
+	
+	public void getSearchName(String name)
+	{
+		searchName.sendKeys(name);
+		searchName.sendKeys(Keys.ENTER);
+		
+	}
+}

@@ -1,0 +1,56 @@
+package com.Ide.testcases;
+
+import java.io.IOException;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import com.Ide.pageobject.homePage;
+
+public class TC__001__HomePageTest extends BaseClass {
+
+	@Test(enabled=false)
+	public void verifyPageTitle() throws IOException
+	{
+		logger.info("***************TestCase Verify Page Title starts*****************"); 
+
+		String actualPageTitle=driver.getTitle();
+		String expectedPageTitle="Gearsa";
+
+		if(actualPageTitle.equals(expectedPageTitle))
+		{
+			logger.info("VerifyLogin - Passed");
+
+			Assert.assertTrue(true);
+		}
+		else
+		{
+			logger.info("VerifyLogin - Failed");
+			captureScreenShot(driver,"verifyPageTitle");
+			Assert.assertTrue(false);
+
+		}
+		logger.info("***************TestCase Verify page Title ends*****************"); 
+	}
+
+	  @Test(enabled=true)
+	    public void verifyText() {
+	        logger.info("***************TestCase Verify Text starts*****************"); 
+
+	        homePage hp = new homePage(driver);
+	        String text = hp.getAllText();
+	        System.out.println(text);
+
+	        // Define the expected sentences
+	        String expectedSentence1 = "We use AI to suggest what gear you should buy next.";
+	        String expectedSentence2 = "Save your choices to your wishlist.";
+	        String expectedSentence3 = "Share your wishlist with someone who loves you.";
+
+	        // Use assert to check if the expected sentences are present in the actual text
+	        Assert.assertTrue(text.contains(expectedSentence1), "Expected sentence 1 not found.");
+	        Assert.assertTrue(text.contains(expectedSentence2), "Expected sentence 2 not found.");
+	        Assert.assertTrue(text.contains(expectedSentence3), "Expected sentence 3 not found.");
+
+	        logger.info("***************TestCase Verify Text ends*****************");
+	    }
+}

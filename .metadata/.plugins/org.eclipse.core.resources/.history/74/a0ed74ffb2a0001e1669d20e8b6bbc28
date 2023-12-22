@@ -1,0 +1,46 @@
+package com.Ide.testcases;
+
+import java.io.IOException;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import com.Ide.pageobject.homePage;
+
+public class TC__001__HomePageTest extends BaseClass {
+
+	@Test(enabled=true)
+	public void verifyPageTitle() throws IOException
+	{
+		logger.info("***************TestCase Verify Page Title starts*****************"); 
+		
+		String actualPageTitle=driver.getTitle();
+		String expectedPageTitle="Gearsa";
+		
+		if(actualPageTitle.equals(expectedPageTitle))
+		{
+			logger.info("VerifyLogin - Passed");
+			
+			Assert.assertTrue(true);
+		}
+		else
+		{
+			logger.info("VerifyLogin - Failed");
+			captureScreenShot(driver,"verifyPageTitle");
+			Assert.assertTrue(false);
+
+		}
+		logger.info("***************TestCase Verify page Title ends*****************"); 
+	}
+	
+	@Test(enabled=true)
+	public void verifyText()
+	{
+		logger.info("***************TestCase Verify Text starts*****************"); 
+
+		homePage hp=new homePage(driver);
+	String text=hp.getAllText();
+		System.out.println("")
+		
+	}
+}
